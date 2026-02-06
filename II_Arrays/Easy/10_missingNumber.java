@@ -15,29 +15,46 @@ class Solution {
 //Optimal - using sum 
 //TC - O(N)
 //SC - O(1)
+//this is not very better because for larger array it will not be able to store in int type
+
+
+/* class Solution {
+    public int missingNumber(int[] nums) {
+        int n = nums.length;
+
+        int xorOriginal = 0;
+        int xorArr = 0;
+
+        // XOR of numbers from 0 to n
+        for (int i = 0; i <= n; i++) {
+            xorOriginal ^= i;
+        }
+
+        // XOR of array elements
+        for (int i = 0; i < n; i++) {
+            xorArr ^= nums[i];
+        }
+
+        int missingNumber = xorOriginal ^ xorArr;
+        return missingNumber;
+    }
+}
+//TC - O(2N) */
+
 
 
 
 /* class Solution {
-    public int missingNumber(int[] nums, int n) {
+    public int missingNumber(int[] nums) {
+        int n = nums.length;
+        int xor = 0;
 
-        int xorAll = 0;
-        int xorArr = 0;
-
-        // XOR of numbers from 1 to n
-        for (int i = 1; i <= n; i++) {
-            xorAll ^= i;
+        for (int i = 0; i < n; i++) {
+            xor ^= i;
+            xor ^= nums[i];
         }
 
-        // XOR of array elements
-        for (int num : nums) {
-            xorArr ^= num;
-        }
-
-        // Missing number
-        return xorAll ^ xorArr;
+        return xor ^ n;
     }
-}
- */
-
+} */
 //TC-O(N)
