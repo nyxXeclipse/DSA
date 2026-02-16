@@ -2,39 +2,43 @@ package II_Arrays.Medium;
 
 class Solution {
     public void nextPermutation(int[] nums) {
-
+        int idx = -1;
         int n = nums.length;
-
-        // 1️⃣ Find breakpoint
-        int i = n - 2;
-        while (i >= 0 && nums[i] >= nums[i + 1]) {
-            i--;
-        }
-
-        // 2️⃣ If breakpoint exists, find element just greater than nums[i]
-        if (i >= 0) {
-            int j = n - 1;
-            while (nums[j] <= nums[i]) {
-                j--;
+        for (int i = n - 2; i >= 0; i--) {
+            if (nums[i] < nums[i + 1]) {
+                idx = i;
+                break;
             }
-
-            // Swap
-            int temp = nums[i];
-            nums[i] = nums[j];
-            nums[j] = temp;
         }
-
-        // 3️⃣ Reverse the suffix
-        reverse(nums, i + 1, n - 1);
+        if (idx == -1) {
+            reverse(nums, 0, n - 1);
+            return;
+        }
+        for (int i = n - 1; i > idx; i--) {
+            int temp = 0;
+            if (nums[i] > nums[idx]) {
+                temp = nums[i];
+                nums[i] = nums[idx];
+                nums[idx] = temp;
+                break;
+            }
+        }
+        reverse(nums, idx + 1, n - 1);
     }
 
-    private void reverse(int[] nums, int left, int right) {
-        while (left < right) {
-            int temp = nums[left];
-            nums[left] = nums[right];
-            nums[right] = temp;
-            left++;
-            right--;
+    public void reverse(int[] nums, int start, int end) {
+        while (start < end) {
+            int temp = nums[end];
+            nums[end] = nums[start];
+            nums[start] = temp;
+            start++;
+            end--;
         }
     }
 }
+//Optimal
+//TC - O(3N)
+//SC - O(1) -> no extra space used but if asked array modified then O(N)
+
+//Brute - by using recursion
+//Better - using next_permutation stl in c++
