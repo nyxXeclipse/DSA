@@ -1,40 +1,61 @@
 package II_Arrays.Medium;
 
+//Optimal
 class Solution {
     public int majorityElement(int[] nums) {
+        int element = 0;
         int count = 0;
-        int candidate = 0;
-
-        for (int num : nums) {
+        for (int i = 0; i < nums.length; i++) {
             if (count == 0) {
-                candidate = num;
-            }
-
-            if (num == candidate) {
+                element = nums[i];
+                count++;
+            } else if (nums[i] == element) {
                 count++;
             } else {
                 count--;
             }
         }
-
-        return candidate;
+        return element;
     }
 }
+//TC - O(N)
 
 
 
 
-/* import java.util.Arrays;
-
+//Better
+/* import java.util.HashMap;
 class Solution {
     public int majorityElement(int[] nums) {
-        Arrays.sort(nums);
-        return nums[nums.length / 2];
+
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        for (int i = 0; i < nums.length; i++) {
+
+            if (map.containsKey(nums[i])) {
+                int count = map.get(nums[i]);
+                map.put(nums[i], count + 1);
+            } else {
+                map.put(nums[i], 1);
+            }
+
+            // Check immediately
+            if (map.get(nums[i]) > nums.length / 2) {
+                return nums[i];
+            }
+        }
+
+        return -1; // For cases where majority not guaranteed
     }
-}
+} */
+//TC - O(NlogN) + O(N)
+//SC - O(N) -> if all elements are unique
 
 
-class Solution {
+
+
+//Brute
+/* class Solution {
     public int majorityElement(int[] nums) {
         int n = nums.length;
 
@@ -54,5 +75,5 @@ class Solution {
 
         return -1; // just for safety
     }
-}
- */
+} */
+//TC - O(N^2)
