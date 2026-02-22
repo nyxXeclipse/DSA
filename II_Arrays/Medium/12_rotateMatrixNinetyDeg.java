@@ -1,5 +1,6 @@
 package II_Arrays.Medium;
 
+//Optimal
 class Solution {
     public void rotate(int[][] matrix) {
         int n = matrix.length;
@@ -29,3 +30,33 @@ class Solution {
         }
     }
 }
+//TC - O(N/2 * N/2) + O(N * N/2) TRANSPOSE + REVERSE
+//SC - O(1)
+
+
+
+
+//Brute - only if its not specified to use in-place
+/* class Solution {
+    public void rotate(int[][] matrix) {
+        int n = matrix.length;
+
+        int[][] rotated = new int[n][n];
+
+        // Fill rotated matrix
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                rotated[j][n - 1 - i] = matrix[i][j];
+            }
+        }
+
+        // Copy back to original matrix
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                matrix[i][j] = rotated[i][j];
+            }
+        }
+    }
+} */
+//TC - O(n²)
+//SC - O(n²)
