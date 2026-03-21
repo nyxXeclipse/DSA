@@ -62,21 +62,22 @@ class Solution {
         int xr = 0; // prefix XOR
         int count = 0;
 
-        // Important: handles subarrays starting from index 0
-        map.put(0, 1);
+        map.put(0, 1); // handle subarrays starting from index 0
 
         for (int num : nums) {
-            xr ^= num; // update prefix XOR
+            xr ^= num;
 
             int needed = xr ^ k;
 
-            // if this exists, we found subarrays
             if (map.containsKey(needed)) {
                 count += map.get(needed);
             }
 
-            // store current XOR
-            map.put(xr, map.getOrDefault(xr, 0) + 1);
+            if (map.containsKey(xr)) {
+                map.put(xr, map.get(xr) + 1);
+            } else {
+                map.put(xr, 1);
+            }
         }
 
         return count;
