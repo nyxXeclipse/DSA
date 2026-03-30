@@ -161,5 +161,6 @@
  * return triangle;
  * }
  * }
- * //TC - O(n²)
+ * //TC - O(N²)
+ * 
  */
