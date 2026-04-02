@@ -22,23 +22,26 @@ class Solution {
 
 //Optimal
 class Solution {
-    public int findFloor(int[] arr, int x) {
-        int idx = -1;
-        int left = 0, right = arr.length - 1;
+    public int lowerBound(int[] nums, int x) {
+        return lb(nums, 0, nums.length - 1, x);
+    }
 
-        while (left <= right) {
-            int mid = left + (right - left) / 2;
+    public int lb(int[] nums, int low, int high, int x) {
+        int ans = nums.length;
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            if (nums[mid] >= x) {
+                ans = mid;
+                high = mid - 1;
 
-            if (arr[mid] <= x) {
-                idx = mid; // possible answer
-                left = mid + 1; // try to find larger valid value
             } else {
-                right = mid - 1; // move left
+                low = mid + 1;
             }
         }
-        return idx;
+        return ans;
     }
 }
+
 //TC - O(log n)
 //SC - O(1)
  */
