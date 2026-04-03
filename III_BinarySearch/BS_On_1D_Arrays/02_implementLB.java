@@ -1,26 +1,4 @@
-/* package III_BinarySearch.BS_On_1D_Arrays;
-//Floor in a Sorted Array - GFG
-//Brute Force
-class Solution {
-    public int findFloor(int[] arr, int x) {
-        // code here
-        int i = 0;
-        int idx = -1;
-        while (i < arr.length && arr[i] <= x) {
-            if (arr[i] <= x) {
-                idx = i;
-            }
-            i++;
-        }
-        return idx;
-    }
-}
-//TC - O(n)
-//SC - O(1)
-
-
-
-//Optimal
+/* //Optimal
 class Solution {
     public int lowerBound(int[] nums, int x) {
         return lb(nums, 0, nums.length - 1, x);
@@ -41,7 +19,32 @@ class Solution {
         return ans;
     }
 }
-
 //TC - O(log n)
 //SC - O(1)
- */
+
+
+
+
+//GFG - CEIL 
+class Solution {
+    public int findCeil(int[] arr, int x) {
+        // code here
+        return ceil(arr, 0, arr.length - 1, x);
+
+    }
+
+    public int ceil(int[] arr, int low, int high, int x) {
+        int idx = -1;
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            if (arr[mid] >= x) {
+                idx = mid;
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+        return idx;
+    }
+}
+// TC - O(log n) */
