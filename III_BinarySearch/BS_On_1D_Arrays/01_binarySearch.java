@@ -1,4 +1,3 @@
-package III_BinarySearch.BS_On_1D_Arrays;
 //Without Binary Search
 /* class Solution {
     public int search(int[] nums, int target) {
