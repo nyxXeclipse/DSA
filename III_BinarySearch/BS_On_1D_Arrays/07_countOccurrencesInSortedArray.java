@@ -92,3 +92,5 @@ class Solution {
         return ans;
     }
 }
+
+//can also be solved by using lb and ub
