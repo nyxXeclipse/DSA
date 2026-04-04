@@ -1,3 +1,54 @@
+//Using concept of ub and lb
+class Solution {
+    int[] searchRange(int[] arr, int target) {
+        int n = arr.length;
+
+        int lb = lowerBound(arr, target); // first occurrence
+        int ub = upperBound(arr, target); // first index > target
+
+        if (lb == n || arr[lb] != target) {
+            return new int[] { -1, -1 }; // target not found
+        }
+
+        int first = lb;
+        int last = ub - 1;
+        return new int[] { first, last };
+    }
+
+    int lowerBound(int[] arr, int target) {
+        int low = 0, high = arr.length - 1;
+        int ans = arr.length;
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            if (arr[mid] >= target) {
+                ans = mid;
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+        return ans;
+    }
+
+    int upperBound(int[] arr, int target) {
+        int low = 0, high = arr.length - 1;
+        int ans = arr.length;
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            if (arr[mid] > target) {
+                ans = mid;
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+        return ans;
+    }
+}
+
+
+
+
 class Solution {
     public int[] searchRange(int[] nums, int target) {
         int first = -1, last = -1;
