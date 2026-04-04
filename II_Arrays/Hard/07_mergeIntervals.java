@@ -18,6 +18,11 @@ class Solution {
         return result.toArray(new int[result.size()][]);
     }
 }
+//TC - O(n log n) + O(n)
+//SC - O(n)
+
+
+
 
 //Optimal
 class Solution {
@@ -37,3 +42,5 @@ class Solution {
         return result.toArray(new int[result.size()][]);
     }
 }
+//TC - O(n log n) + O(n)
+//SC - O(n)
