@@ -1,4 +1,4 @@
-//Brute
+/* //Brute
 class Solution {
     public int[] findMissingAndRepeatedValues(int[][] grid) {
         int n = grid.length;
@@ -125,7 +125,7 @@ class Solution {
 
 
 
-//Optimal using xor
+//Optimal using XOR
 class Solution {
     public int[] findMissingRepeatingNumbers(int[] nums) {
         int n = nums.length;
@@ -169,4 +169,4 @@ class Solution {
     }
 }
 //TC - O(N)
-//SC - O(1)
+//SC - O(1) */
