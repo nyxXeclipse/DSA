@@ -29,3 +29,5 @@ class Solution {
         return false;
     }
 }
+//TC - O(log n) -> WORST CASE - O(n) -> Many Duplicates
+//SC - O(1)
