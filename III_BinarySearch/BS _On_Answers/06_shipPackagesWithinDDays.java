@@ -32,3 +32,4 @@ class Solution {
         return daysNeeded <= days;
     }
 }
+//TC - TC=O(n⋅log(sum(weights)))
