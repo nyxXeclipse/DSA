@@ -28,3 +28,4 @@ class Solution {
         return sum;
     }
 }
+//TC - O(n⋅log(max(nums)))
